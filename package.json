@@ -10,7 +10,6 @@
     "dev": "npm run dev --workspace=apps/backend",
     "build": "npm run build --workspace=apps/frontend && npm run build --workspace=apps/backend",
     "start": "npm run start:prod --workspace=apps/backend",
-    "install:all": "npm install && npm run clean:workspaces",
     "clean": "rm -rf node_modules apps/*/node_modules apps/*/.next apps/*/dist",
     "clean:workspaces": "rm -rf apps/*/node_modules",
     "deploy:prepare": "npm run clean && npm install --omit=dev && npm run build"
