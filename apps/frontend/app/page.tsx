@@ -1,23 +1,20 @@
-"use client";
+import type { StatusResponse } from "@/lib/supabase/client";
 
-import { useEffect, useState } from "react";
+const API_URL = process.env.INTERNAL_API_URL || "http://localhost:3000";
 
-export default function Home() {
-  const [apiData, setApiData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+async function getStatus(): Promise<StatusResponse | null> {
+  try {
+    const res = await fetch(`${API_URL}/api/status`, {
+      cache: "no-store",
+    });
+    return res.json();
+  } catch {
+    return null;
+  }
+}
 
-  useEffect(() => {
-    fetch("/api/status")
-      .then((res) => res.json())
-      .then((data) => {
-        setApiData(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error while loading from API:", err);
-        setLoading(false);
-      });
-  }, []);
+export default async function Home() {
+  const apiData = await getStatus();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
@@ -28,9 +25,7 @@ export default function Home() {
 
         <div className="border rounded-lg p-6 bg-gray-50 dark:bg-gray-900">
           <h2 className="text-2xl font-semibold mb-4">API Status</h2>
-          {loading ? (
-            <p className="text-gray-600 dark:text-gray-400">Loading...</p>
-          ) : apiData ? (
+          {apiData ? (
             <pre className="bg-gray-900 text-green-400 p-4 rounded overflow-auto">
               {JSON.stringify(apiData, null, 2)}
             </pre>

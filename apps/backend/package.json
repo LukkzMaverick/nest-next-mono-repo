@@ -36,5 +36,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "@nestjs/config": "^4.0.3",
+    "@repo/supabase-types": "*"
   }
 }

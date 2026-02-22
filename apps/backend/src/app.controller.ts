@@ -11,12 +11,7 @@ export class AppController {
   }
 
   @Get('status')
-  getStatus() {
-    return {
-      status: 'ok',
-      timestamp: new Date().toISOString(),
-      message: 'NestJS API is running!',
-      service: 'NestJS + Next.js Monorepo',
-    };
+  async getStatus() {
+    return this.appService.getStatus();
   }
 }

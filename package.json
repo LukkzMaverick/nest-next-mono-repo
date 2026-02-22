@@ -4,12 +4,17 @@
   "private": true,
   "workspaces": [
     "apps/backend",
-    "apps/frontend"
+    "apps/frontend",
+    "packages/supabase-types"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=apps/backend",
     "build": "npm run build --workspace=apps/frontend && npm run build --workspace=apps/backend",
     "start": "npm run start:prod --workspace=apps/backend",
+    "supabase:up": "docker compose -f docker-compose.supabase.yml up -d",
+    "supabase:down": "docker compose -f docker-compose.supabase.yml down",
+    "supabase:logs": "docker compose -f docker-compose.supabase.yml logs -f",
+    "supabase:gen-types": "npx supabase gen types typescript --db-url postgresql://postgres:postgres@localhost:54322/postgres > packages/supabase-types/src/database.types.ts",
     "clean": "rm -rf node_modules apps/*/node_modules apps/*/.next apps/*/dist",
     "clean:workspaces": "rm -rf apps/*/node_modules",
     "deploy:prepare": "npm run clean && npm install --omit=dev && npm run build"
@@ -18,6 +23,8 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@supabase/supabase-js": "^2.97.0",
+    "dotenv": "^17.3.1",
     "next": "^16.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
