@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import type { NextFunction, Request, Response } from 'express';
 import { AppModule } from './app.module';
 import { NextService } from './next/next.service';
@@ -11,6 +12,15 @@ async function bootstrap() {
 
   const apiPrefix = 'api';
   app.setGlobalPrefix(apiPrefix);
+
+  // Swagger setup — must be before Next.js middleware
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('API Documentation')
+    .setDescription('Auto-generated API documentation')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup(`${apiPrefix}/docs`, app, document);
 
   const nextService = app.get(NextService);
   await nextService.ensureReady();
