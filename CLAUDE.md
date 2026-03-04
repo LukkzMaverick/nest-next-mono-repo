@@ -14,9 +14,7 @@
 - Frontend only: `npm run build --workspace=apps/frontend`
 
 ## Environment Variables
-- Frontend Supabase:
-  - `NEXT_PUBLIC_SUPABASE_URL`
-  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- All env variables live in a single `.env` at the repo root.
 - Backend Supabase:
   - `SUPABASE_URL`
   - `SUPABASE_SERVICE_ROLE_KEY`
