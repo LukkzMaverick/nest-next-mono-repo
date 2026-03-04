@@ -37,6 +37,7 @@ services:
     restart: unless-stopped
     depends_on:
       - rest
+    entrypoint: sh -c "sed 's|SUPABASE_ANON_KEY_PLACEHOLDER|${SUPABASE_ANON_KEY}|g; s|SUPABASE_SERVICE_ROLE_KEY_PLACEHOLDER|${SUPABASE_SERVICE_ROLE_KEY}|g' /home/kong/kong.yml.template > /home/kong/kong.yml && /docker-entrypoint.sh kong docker-start"
     environment:
       KONG_DATABASE: off
       KONG_DECLARATIVE_CONFIG: /home/kong/kong.yml
@@ -49,7 +50,7 @@ services:
       - "54321:8000"
       - "54323:8001"
     volumes:
-      - ./supabase/kong.yml:/home/kong/kong.yml:ro
+      - ./supabase/kong.yml:/home/kong/kong.yml.template:ro
 
   studio:
     image: supabase/studio:2026.02.16-sha-26c615c

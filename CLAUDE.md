@@ -2,8 +2,10 @@
 
 ## Monorepo Rules
 - Always run `npm install` at the repository root.
-- Dependencies are installed at the repository root and shared via npm workspaces.
-- Do not run dependency installation inside `apps/backend` or `apps/frontend`.
+- Each workspace declares its own dependencies in its `package.json`. npm workspaces hoists them automatically.
+- Backend deps (NestJS, etc.) go in `apps/backend/package.json`.
+- Frontend deps (Next.js, React, etc.) go in `apps/frontend/package.json`.
+- Shared dev tooling (TypeScript, ESLint, Prettier) stays in the root `package.json`.
 
 ## Development Commands
 - Start app: `npm run dev`

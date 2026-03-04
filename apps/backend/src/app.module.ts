@@ -7,7 +7,7 @@ import { SupabaseModule } from './supabase/supabase.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.env', '../../.env'] }),
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '../../.env' }),
     NextModule,
     SupabaseModule,
   ],

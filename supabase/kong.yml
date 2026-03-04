@@ -13,11 +13,11 @@ services:
 consumers:
   - username: anon
     keyauth_credentials:
-      - key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzcxNjE0NzQyLCJleHAiOjIwODY5NzQ3NDJ9.KrSYOW4FipeHlFylGsoK3oqeZwnum1aTslcMM5K7tCM
+      - key: SUPABASE_ANON_KEY_PLACEHOLDER
 
   - username: service_role
     keyauth_credentials:
-      - key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzE2MTQ3NDIsImV4cCI6MjA4Njk3NDc0Mn0.7FBmIRAWY5Zt89uxsjjd8tMW4iLPZmNQGGRiiAGuCIw
+      - key: SUPABASE_SERVICE_ROLE_KEY_PLACEHOLDER
 
 plugins:
   - name: key-auth
