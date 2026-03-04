@@ -10,8 +10,6 @@
 ## Development Commands
 - Start app: `npm run dev`
 - Build all: `npm run build`
-- Backend only: `npm run build --workspace=apps/backend`
-- Frontend only: `npm run build --workspace=apps/frontend`
 
 ## Environment Variables
 - All env variables live in a single `.env` at the repo root.
