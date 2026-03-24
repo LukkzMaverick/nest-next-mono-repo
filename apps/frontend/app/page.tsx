@@ -1,4 +1,4 @@
-import type { StatusResponse } from "@/lib/supabase/client";
+import type { StatusResponse } from "@/lib/api/status";
 
 const API_URL = process.env.INTERNAL_API_URL || "http://localhost:3000";
 

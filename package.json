@@ -4,17 +4,12 @@
   "private": true,
   "workspaces": [
     "apps/backend",
-    "apps/frontend",
-    "packages/supabase-types"
+    "apps/frontend"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=apps/backend",
     "build": "npm run build --workspace=apps/frontend && npm run build --workspace=apps/backend",
-    "start": "npm run start:prod --workspace=apps/backend",
-    "supabase:up": "docker compose -f docker-compose.supabase.yml up -d",
-    "supabase:down": "docker compose -f docker-compose.supabase.yml down",
-    "supabase:logs": "docker compose -f docker-compose.supabase.yml logs -f",
-    "supabase:gen-types": "npx supabase gen types typescript --db-url postgresql://postgres:postgres@localhost:54322/postgres > packages/supabase-types/src/database.types.ts"
+    "start": "npm run start:prod --workspace=apps/backend"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

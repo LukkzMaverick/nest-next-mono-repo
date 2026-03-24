@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { SupabaseService } from './supabase/supabase.service';
+import { PrismaService } from './prisma/prisma.service';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -12,8 +12,8 @@ describe('AppController', () => {
       providers: [
         AppService,
         {
-          provide: SupabaseService,
-          useValue: { getClient: () => ({}) },
+          provide: PrismaService,
+          useValue: { $queryRaw: jest.fn() },
         },
       ],
     }).compile();
